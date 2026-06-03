@@ -1,12 +1,24 @@
 {
-    "name": "Lean 4 Development Environment",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-    "postCreateCommand": "bash .devcontainer/install-lean.sh",
+    "name": "Lean 4",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
     "customizations": {
         "vscode": {
             "extensions": [
                 "leanprover.lean4"
-            ]
+            ],
+            "settings": {
+                "lean4.serverEnv": {
+                    "PATH": "${containerEnv:PATH}:/home/lean/.elan/bin"
+                }
+            }
         }
-    }
+    },
+    "forwardPorts": [3000],
+    "postCreateCommand": "lake build",
+    "postStartCommand": "lake serve",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace"
 }
