@@ -1,2 +1,4 @@
-*.lean linguist-language=Lean
 *.sh linguist-language=Shell
+*.lean linguist-language=Lean
+lakefile.lean linguist-language=Lean
+lean-toolchain linguist-language=Ignore
