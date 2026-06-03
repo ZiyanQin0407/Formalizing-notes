@@ -1,0 +1,2 @@
+*.lean linguist-language=Lean
+*.sh linguist-language=Shell
